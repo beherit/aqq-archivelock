@@ -464,6 +464,7 @@ object ChangePassForm: TChangePassForm
     Caption = 'OK'
     ModalResult = 1
     TabOrder = 3
+    OnClick = aChangePassExecute
     SkinData.SkinSection = 'BUTTON'
   end
   object CancelButton: TsButton
