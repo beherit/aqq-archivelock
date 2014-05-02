@@ -1,0 +1,1 @@
+Wtyczka blokuje dostêp do archiwum rozmów na has³o. Domyœlne has³o to "lock".
