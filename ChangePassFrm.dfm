@@ -592,6 +592,7 @@ object ChangePassForm: TChangePassForm
     ThirdParty.ThirdScrollBar = ' '
     ThirdParty.ThirdStaticText = ' '
     ThirdParty.ThirdNativePaint = ' '
+    OnSysDlgInit = sSkinManagerSysDlgInit
     Left = 32
     Top = 97
   end

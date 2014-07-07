@@ -136,3 +136,9 @@ void __fastcall TChangePassForm::aChangePassExecute(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TChangePassForm::sSkinManagerSysDlgInit(TacSysDlgData DlgData, bool &AllowSkinning)
+{
+  AllowSkinning = false;
+}
+//---------------------------------------------------------------------------
+
