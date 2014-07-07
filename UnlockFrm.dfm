@@ -551,6 +551,7 @@ object UnlockForm: TUnlockForm
     ThirdParty.ThirdScrollBar = ' '
     ThirdParty.ThirdStaticText = ' '
     ThirdParty.ThirdNativePaint = ' '
+    OnSysDlgInit = sSkinManagerSysDlgInit
     Left = 32
     Top = 64
   end

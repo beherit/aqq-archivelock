@@ -52,6 +52,8 @@ __published:	// IDE-managed Components
 	void __fastcall aUnlockExecute(TObject *Sender);
 	void __fastcall aExitExecute(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
+	void __fastcall sSkinManagerSysDlgInit(TacSysDlgData DlgData, bool &AllowSkinning);
+
 private:	// User declarations
 public:		// User declarations
 	__fastcall TUnlockForm(TComponent* Owner);

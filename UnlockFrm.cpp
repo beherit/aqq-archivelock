@@ -121,3 +121,10 @@ void __fastcall TUnlockForm::aUnlockExecute(TObject *Sender)
   else Application->MessageBox(L"B³êdne has³o",L"B³¹d",MB_ICONWARNING);
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TUnlockForm::sSkinManagerSysDlgInit(TacSysDlgData DlgData, bool &AllowSkinning)
+{
+  AllowSkinning = false;
+}
+//---------------------------------------------------------------------------
+
