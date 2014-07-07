@@ -566,6 +566,7 @@ object ChangePassForm: TChangePassForm
     MenuSupport.ExtraLineFont.Height = -11
     MenuSupport.ExtraLineFont.Name = 'Tahoma'
     MenuSupport.ExtraLineFont.Style = []
+    Options.OptimizingPriority = opMemory
     SkinDirectory = 'c:\Skins'
     SkinInfo = 'N/A'
     ThirdParty.ThirdEdits = 'THotKey'#13#10
@@ -590,6 +591,7 @@ object ChangePassForm: TChangePassForm
     ThirdParty.ThirdUpDown = ' '#13#10
     ThirdParty.ThirdScrollBar = ' '
     ThirdParty.ThirdStaticText = ' '
+    ThirdParty.ThirdNativePaint = ' '
     Left = 32
     Top = 97
   end
