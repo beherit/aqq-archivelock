@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// Copyright (C) 2014 Krzysztof Grochocki
+// Copyright (C) 2014-2015 Krzysztof Grochocki
 //
 // This file is part of ArchiveLock
 //
@@ -21,11 +21,10 @@
 
 #include <vcl.h>
 #include <windows.h>
-#pragma hdrstop
-#pragma argsused
-#include <PluginAPI.h>
 #include <inifiles.hpp>
 #include <IdHashMessageDigest.hpp>
+#include <PluginAPI.h>
+#pragma hdrstop
 #include "ChangePassFrm.h"
 #include "UnlockFrm.h"
 
