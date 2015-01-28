@@ -1,1 +1,4 @@
+PL:
 Wtyczka blokuje dostêp do archiwum rozmów na has³o. Domyœlne has³o to "lock".
+EN:
+Plugin blocks access to conversations archive by password. Default password is "lock".

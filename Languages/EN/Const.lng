@@ -1,7 +1,7 @@
 Error=Error
 DifferentPasswords=Passwords are different
-NoNewPasswords=Enter the new password twice
+NoNewPasswords=Enter new password twice
 IncorrectOldPassword=Incorrect old password
 IncorrectPassword=Incorrect password
-DisablePlugin=Disabling plug-in secured
-DisablePluginPassword=Enter the password to disable plug-in:
+DisablePlugin=Disabling the plugin secured
+DisablePluginPassword=Enter password to disable plugin:
