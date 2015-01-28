@@ -1,3 +1,8 @@
+1.1.0.0
+-----
+* Obsługa lokalizacji (polskiej i angielskiej).
+* Aktualizacja komponentów AlphaControls do nowszej wersji (9.19).
+
 1.0.2.0
 -----
 * Nieskórkowanie systemowych okien dialogowych niepochodzących z wtyczki.

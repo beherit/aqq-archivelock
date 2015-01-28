@@ -479,20 +479,20 @@ extern "C" INT_PTR __declspec(dllexport) __stdcall Load(PPluginLink Link)
   if(!DirectoryExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL"))
    CreateDir(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL");
   //Wypakowanie plikow lokalizacji
-  //F4E778675592862DC6FFD41625D7ADF7
+  //DD4288D82D79A4D6C698406BCD6F022E
   if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\Const.lng"))
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\Const.lng").w_str(),L"EN_CONST",L"DATA");
-  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\Const.lng")!="F4E778675592862DC6FFD41625D7ADF7")
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\Const.lng")!="DD4288D82D79A4D6C698406BCD6F022E")
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\Const.lng").w_str(),L"EN_CONST",L"DATA");
   //648138B27E9F0FF9F1EF7665BF0898A2
   if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TChangePassForm.lng"))
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TChangePassForm.lng").w_str(),L"EN_CHANGEPASSFRM",L"DATA");
   else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TChangePassForm.lng")!="648138B27E9F0FF9F1EF7665BF0898A2")
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TChangePassForm.lng").w_str(),L"EN_CHANGEPASSFRM",L"DATA");
-  //E6C2D670286D5141A40CBCF86EC2383A
+  //FF10D39EB4A1E180EBC8071EBCA0A2C2
   if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng"))
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng").w_str(),L"EN_UNLOCKFRM",L"DATA");
-  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng")!="E6C2D670286D5141A40CBCF86EC2383A")
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng")!="FF10D39EB4A1E180EBC8071EBCA0A2C2")
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng").w_str(),L"EN_UNLOCKFRM",L"DATA");
   //6C948D507335B571F70AA70C40F7886E
   if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng"))
@@ -504,10 +504,10 @@ extern "C" INT_PTR __declspec(dllexport) __stdcall Load(PPluginLink Link)
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng").w_str(),L"PL_CHANGEPASSFRM",L"DATA");
   else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng")!="3B871A6C237D8001428D9854EE1CE9B1")
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng").w_str(),L"PL_CHANGEPASSFRM",L"DATA");
-  //CB220D974364ED85EC6C6B50A79F2F5C
+  //27EE06EC109088D8FA3F46D8CDA69F35
   if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng"))
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng").w_str(),L"PL_UNLOCKFRM",L"DATA");
-  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng")!="CB220D974364ED85EC6C6B50A79F2F5C")
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng")!="27EE06EC109088D8FA3F46D8CDA69F35")
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng").w_str(),L"PL_UNLOCKFRM",L"DATA");
   //Ustawienie sciezki lokalizacji wtyczki
   UnicodeString LangCode = (wchar_t*)PluginLink.CallService(AQQ_FUNCTION_GETLANGCODE,0,0);
@@ -599,7 +599,7 @@ extern "C" PPluginInfo __declspec(dllexport) __stdcall AQQPluginInfo(DWORD AQQVe
 {
   PluginInfo.cbSize = sizeof(TPluginInfo);
   PluginInfo.ShortName = L"ArchiveLock";
-  PluginInfo.Version = PLUGIN_MAKE_VERSION(1,0,2,0);
+  PluginInfo.Version = PLUGIN_MAKE_VERSION(1,1,0,0);
   PluginInfo.Description = L"Wtyczka blokuje dostêp do archiwum rozmów na has³o. \n\nDomyœlne has³o to \"lock\".";
   PluginInfo.Author = L"Krzysztof Grochocki";
   PluginInfo.AuthorMail = L"kontakt@beherit.pl";
