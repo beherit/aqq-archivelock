@@ -1,4 +1,5 @@
 object ChangePassForm: TChangePassForm
+  Tag = 1
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
@@ -456,6 +457,7 @@ object ChangePassForm: TChangePassForm
     Transparent = True
   end
   object OkButton: TsButton
+    Tag = 5
     Left = 134
     Top = 93
     Width = 75
@@ -468,6 +470,7 @@ object ChangePassForm: TChangePassForm
     SkinData.SkinSection = 'BUTTON'
   end
   object CancelButton: TsButton
+    Tag = 6
     Left = 215
     Top = 93
     Width = 75
@@ -480,6 +483,7 @@ object ChangePassForm: TChangePassForm
     SkinData.SkinSection = 'BUTTON'
   end
   object OldPassEdit: TsEdit
+    Tag = 2
     Left = 169
     Top = 12
     Width = 121
@@ -502,6 +506,7 @@ object ChangePassForm: TChangePassForm
     BoundLabel.UseSkinColor = True
   end
   object NewPassEdit: TsEdit
+    Tag = 3
     Left = 169
     Top = 39
     Width = 121
@@ -523,6 +528,7 @@ object ChangePassForm: TChangePassForm
     BoundLabel.UseSkinColor = True
   end
   object ConfirmNewPassEdit: TsEdit
+    Tag = 4
     Left = 169
     Top = 66
     Width = 121

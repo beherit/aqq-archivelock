@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// Copyright (C) 2014 Krzysztof Grochocki
+// Copyright (C) 2014-2015 Krzysztof Grochocki
 //
 // This file is part of ArchiveLock
 //
@@ -21,6 +21,7 @@
 
 //---------------------------------------------------------------------------
 #include <vcl.h>
+#include <LangAPI.hpp>
 #pragma hdrstop
 #include "UnlockFrm.h"
 //---------------------------------------------------------------------------
@@ -59,6 +60,8 @@ void __fastcall TUnlockForm::WMTransparency(TMessage &Message)
 
 void __fastcall TUnlockForm::FormCreate(TObject *Sender)
 {
+  //Lokalizowanie formy
+  LangForm(this);
   //Wlaczona zaawansowana stylizacja okien
   if(ChkSkinEnabled())
   {
@@ -118,7 +121,7 @@ void __fastcall TUnlockForm::aUnlockExecute(TObject *Sender)
 	//Zamkniecie formy
 	Close();
   }
-  else Application->MessageBox(L"B³êdne has³o",L"B³¹d",MB_ICONWARNING);
+  else Application->MessageBox(GetLangStr("IncorrectPassword").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
 }
 //---------------------------------------------------------------------------
 

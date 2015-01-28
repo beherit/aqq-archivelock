@@ -24,6 +24,7 @@
 #include <inifiles.hpp>
 #include <IdHashMessageDigest.hpp>
 #include <PluginAPI.h>
+#include <LangAPI.hpp>
 #pragma hdrstop
 #include "ChangePassFrm.h"
 #include "UnlockFrm.h"
@@ -57,6 +58,7 @@ UnicodeString UserPassword;
 //FORWARD-AQQ-HOOKS----------------------------------------------------------
 INT_PTR __stdcall OnBeforePluginUnload(WPARAM wParam, LPARAM lParam);
 INT_PTR __stdcall OnColorChange(WPARAM wParam, LPARAM lParam);
+INT_PTR __stdcall OnLangCodeChanged(WPARAM wParam, LPARAM lParam);
 INT_PTR __stdcall OnThemeChanged(WPARAM wParam, LPARAM lParam);
 INT_PTR __stdcall OnWindowEvent(WPARAM wParam, LPARAM lParam);
 //FORWARD-TIMER--------------------------------------------------------------
@@ -221,8 +223,8 @@ INT_PTR __stdcall OnBeforePluginUnload(WPARAM wParam, LPARAM lParam)
 	Application->Handle = (HWND)UnlockForm;
 	TUnlockForm *hUnlockForm = new TUnlockForm(Application);
 	//Ustawienie danych na formie
-	hUnlockForm->Caption = "Zabezpieczone wy³¹czenie wtyczki";
-	hUnlockForm->PassEdit->BoundLabel->Caption = "Podaj has³o, aby wy³¹czyæ wtyczkê:";
+	hUnlockForm->Caption = GetLangStr("DisablePlugin");
+	hUnlockForm->PassEdit->BoundLabel->Caption = GetLangStr("DisablePluginPassword");
 	//Pokaznie okna
 	hUnlockForm->ShowModal();
 	//Pobranie informacji o prawidlowosci hasla
@@ -250,6 +252,29 @@ INT_PTR __stdcall OnColorChange(WPARAM wParam, LPARAM lParam)
 	  hChangePassForm->sSkinManager->Saturation = lParam;
 	}
   }
+
+  return 0;
+}
+//---------------------------------------------------------------------------
+
+//Hook na zmiane lokalizacji
+INT_PTR __stdcall OnLangCodeChanged(WPARAM wParam, LPARAM lParam)
+{
+  //Czyszczenie cache lokalizacji
+  ClearLngCache();
+  //Pobranie sciezki do katalogu prywatnego uzytkownika
+  UnicodeString PluginUserDir = GetPluginUserDir();
+  //Ustawienie sciezki lokalizacji wtyczki
+  UnicodeString LangCode = (wchar_t*)lParam;
+  LangPath = PluginUserDir + "\\\\Languages\\\\ArchiveLock\\\\" + LangCode + "\\\\";
+  if(!DirectoryExists(LangPath))
+  {
+	LangCode = (wchar_t*)PluginLink.CallService(AQQ_FUNCTION_GETDEFLANGCODE,0,0);
+	LangPath = PluginUserDir + "\\\\Languages\\\\ArchiveLock\\\\" + LangCode + "\\\\";
+  }
+  //Aktualizacja lokalizacji form wtyczki
+  for(int i=0;i<Screen->FormCount;i++)
+   LangForm(Screen->Forms[i]);
 
   return 0;
 }
@@ -444,6 +469,54 @@ extern "C" INT_PTR __declspec(dllexport) __stdcall Load(PPluginLink Link)
   PluginLink = *Link;
   //Pobranie sciezki do katalogu prywatnego uzytkownika
   UnicodeString PluginUserDir = GetPluginUserDir();
+  //Tworzenie katalogow lokalizacji
+  if(!DirectoryExists(PluginUserDir+"\\\\Languages"))
+   CreateDir(PluginUserDir+"\\\\Languages");
+  if(!DirectoryExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock"))
+   CreateDir(PluginUserDir+"\\\\Languages\\\\ArchiveLock");
+  if(!DirectoryExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN"))
+   CreateDir(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN");
+  if(!DirectoryExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL"))
+   CreateDir(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL");
+  //Wypakowanie plikow lokalizacji
+  //F4E778675592862DC6FFD41625D7ADF7
+  if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\Const.lng"))
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\Const.lng").w_str(),L"EN_CONST",L"DATA");
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\Const.lng")!="F4E778675592862DC6FFD41625D7ADF7")
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\Const.lng").w_str(),L"EN_CONST",L"DATA");
+  //648138B27E9F0FF9F1EF7665BF0898A2
+  if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TChangePassForm.lng"))
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TChangePassForm.lng").w_str(),L"EN_CHANGEPASSFRM",L"DATA");
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TChangePassForm.lng")!="648138B27E9F0FF9F1EF7665BF0898A2")
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TChangePassForm.lng").w_str(),L"EN_CHANGEPASSFRM",L"DATA");
+  //E6C2D670286D5141A40CBCF86EC2383A
+  if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng"))
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng").w_str(),L"EN_UNLOCKFRM",L"DATA");
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng")!="E6C2D670286D5141A40CBCF86EC2383A")
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng").w_str(),L"EN_UNLOCKFRM",L"DATA");
+  //6C948D507335B571F70AA70C40F7886E
+  if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng"))
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng").w_str(),L"PL_CONST",L"DATA");
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng")!="6C948D507335B571F70AA70C40F7886E")
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng").w_str(),L"PL_CONST",L"DATA");
+  //3B871A6C237D8001428D9854EE1CE9B1
+  if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng"))
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng").w_str(),L"PL_CHANGEPASSFRM",L"DATA");
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng")!="3B871A6C237D8001428D9854EE1CE9B1")
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng").w_str(),L"PL_CHANGEPASSFRM",L"DATA");
+  //CB220D974364ED85EC6C6B50A79F2F5C
+  if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng"))
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng").w_str(),L"PL_UNLOCKFRM",L"DATA");
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng")!="CB220D974364ED85EC6C6B50A79F2F5C")
+   ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng").w_str(),L"PL_UNLOCKFRM",L"DATA");
+  //Ustawienie sciezki lokalizacji wtyczki
+  UnicodeString LangCode = (wchar_t*)PluginLink.CallService(AQQ_FUNCTION_GETLANGCODE,0,0);
+  LangPath = PluginUserDir + "\\\\Languages\\\\ArchiveLock\\\\" + LangCode + "\\\\";
+  if(!DirectoryExists(LangPath))
+  {
+	LangCode = (wchar_t*)PluginLink.CallService(AQQ_FUNCTION_GETDEFLANGCODE,0,0);
+	LangPath = PluginUserDir + "\\\\Languages\\\\ArchiveLock\\\\" + LangCode + "\\\\";
+  }
   //Wypakiwanie ikonki ArchiveLock.dll.png
   //167BFD9111AD9E880753A41D531BD622
   if(!DirectoryExists(PluginUserDir + "\\\\Shared"))
@@ -456,6 +529,8 @@ extern "C" INT_PTR __declspec(dllexport) __stdcall Load(PPluginLink Link)
   PluginLink.HookEvent(AQQ_SYSTEM_PLUGIN_BEFOREUNLOAD,OnBeforePluginUnload);
   //Hook na zmiane kolorystyki AlphaControls
   PluginLink.HookEvent(AQQ_SYSTEM_COLORCHANGE,OnColorChange);
+  //Hook na zmiane lokalizacji
+  PluginLink.HookEvent(AQQ_SYSTEM_LANGCODE_CHANGED,OnLangCodeChanged);
   //Hook na zmiane kompozycji
   PluginLink.HookEvent(AQQ_SYSTEM_THEMECHANGED, OnThemeChanged);
   //Hook na zamkniecie/otwarcie okien
@@ -495,6 +570,7 @@ extern "C" INT_PTR __declspec(dllexport) __stdcall Unload()
   //Wyladowanie wszystkich hookow
   PluginLink.UnhookEvent(OnBeforePluginUnload);
   PluginLink.UnhookEvent(OnColorChange);
+  PluginLink.UnhookEvent(OnLangCodeChanged);
   PluginLink.UnhookEvent(OnThemeChanged);
   PluginLink.UnhookEvent(OnWindowEvent);
 
