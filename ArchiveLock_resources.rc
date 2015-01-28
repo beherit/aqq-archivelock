@@ -1,1 +1,7 @@
 SHARED DATA "Data\\ArchiveLock.dll.png"
+EN_CONST DATA "Languages\\EN\\Const.lng"
+EN_CHANGEPASSFRM DATA "Languages\\EN\\TChangePassForm.lng"
+EN_UNLOCKFRM DATA "Languages\\EN\\TUnlockForm.lng"
+PL_CONST DATA "Languages\\PL\\Const.lng"
+PL_CHANGEPASSFRM DATA "Languages\\PL\\TChangePassForm.lng"
+PL_UNLOCKFRM DATA "Languages\\PL\\TUnlockForm.lng"

@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// Copyright (C) 2014 Krzysztof Grochocki
+// Copyright (C) 2014-2015 Krzysztof Grochocki
 //
 // This file is part of ArchiveLock
 //
@@ -21,6 +21,7 @@
 
 //---------------------------------------------------------------------------
 #include <vcl.h>
+#include <LangAPI.hpp>
 #pragma hdrstop
 #include "ChangePassFrm.h"
 //---------------------------------------------------------------------------
@@ -60,6 +61,8 @@ void __fastcall TChangePassForm::WMTransparency(TMessage &Message)
 
 void __fastcall TChangePassForm::FormCreate(TObject *Sender)
 {
+  //Lokalizowanie formy
+  LangForm(this);
   //Wlaczona zaawansowana stylizacja okien
   if(ChkSkinEnabled())
   {
@@ -127,12 +130,12 @@ void __fastcall TChangePassForm::aChangePassExecute(TObject *Sender)
 		SetPassword(NewPassEdit->Text);
 		//Zamkniecie formy
 		Close();
-	  }
-	  else Application->MessageBox(L"Nowe has³a siê ró¿ni¹",L"B³¹d",MB_ICONWARNING);
+	  }//GetLangStr
+	  else Application->MessageBox(GetLangStr("DifferentPasswords").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
 	}
-	else Application->MessageBox(L"Podaj nowe has³a",L"B³¹d",MB_ICONWARNING);
+	else Application->MessageBox(GetLangStr("NoNewPasswords").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
   }
-  else Application->MessageBox(L"B³êdne stare has³o",L"B³¹d",MB_ICONWARNING);
+  else Application->MessageBox(GetLangStr("IncorrectOldPassword").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
 }
 //---------------------------------------------------------------------------
 

@@ -1,9 +1,10 @@
 object UnlockForm: TUnlockForm
+  Tag = 1
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Zabezpieczone archiwum'
+  Caption = 'Archiwum zabezpieczone'
   ClientHeight = 98
   ClientWidth = 297
   Color = clBtnFace
@@ -457,6 +458,7 @@ object UnlockForm: TUnlockForm
     Transparent = True
   end
   object CancelButton: TsButton
+    Tag = 4
     Left = 212
     Top = 62
     Width = 75
@@ -468,6 +470,7 @@ object UnlockForm: TUnlockForm
     SkinData.SkinSection = 'BUTTON'
   end
   object OkButton: TsButton
+    Tag = 3
     Left = 131
     Top = 62
     Width = 75
@@ -479,6 +482,7 @@ object UnlockForm: TUnlockForm
     SkinData.SkinSection = 'BUTTON'
   end
   object PassEdit: TsEdit
+    Tag = 2
     Left = 62
     Top = 35
     Width = 225
@@ -488,7 +492,7 @@ object UnlockForm: TUnlockForm
     TabOrder = 0
     SkinData.SkinSection = 'EDIT'
     BoundLabel.Active = True
-    BoundLabel.Caption = 'Podaj has'#322'o do archiwum:'
+    BoundLabel.Caption = 'Podaj has'#322'o, aby odblokowa'#263':'
     BoundLabel.Indent = 6
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
