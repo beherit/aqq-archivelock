@@ -42,6 +42,7 @@ __declspec(dllimport)bool ChkThemeAnimateWindows();
 __declspec(dllimport)bool ChkThemeGlowing();
 __declspec(dllimport)int GetHUE();
 __declspec(dllimport)int GetSaturation();
+__declspec(dllimport)int GetBrightness();
 __declspec(dllimport)UnicodeString MD5(UnicodeString Text);
 __declspec(dllimport)UnicodeString GetPassword();
 __declspec(dllimport)void SetPassword(UnicodeString Password);
@@ -81,6 +82,7 @@ void __fastcall TChangePassForm::FormCreate(TObject *Sender)
 	  //Zmiana kolorystyki AlphaControls
 	  sSkinManager->HueOffset = GetHUE();
 	  sSkinManager->Saturation = GetSaturation();
+	  sSkinManager->Brightness = GetBrightness();
       //Aktywacja skorkowania AlphaControls
 	  sSkinManager->Active = true;
 	}

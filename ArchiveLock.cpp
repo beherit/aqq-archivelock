@@ -142,6 +142,11 @@ int GetSaturation()
   return (int)PluginLink.CallService(AQQ_SYSTEM_COLORGETSATURATION,0,0);
 }
 //---------------------------------------------------------------------------
+int GetBrightness()
+{
+  return (int)PluginLink.CallService(AQQ_SYSTEM_COLORGETBRIGHTNESS,0,0);
+}
+//---------------------------------------------------------------------------
 
 //Obliczanie MD5 ciagu znakow
 UnicodeString MD5(UnicodeString Text)
@@ -248,8 +253,10 @@ INT_PTR __stdcall OnColorChange(WPARAM wParam, LPARAM lParam)
 	//Wlaczona zaawansowana stylizacja okien
 	if(ChkSkinEnabled())
 	{
-	  hChangePassForm->sSkinManager->HueOffset = wParam;
-	  hChangePassForm->sSkinManager->Saturation = lParam;
+	  TPluginColorChange ColorChange = *(PPluginColorChange)wParam;
+	  hChangePassForm->sSkinManager->HueOffset = ColorChange.Hue;
+	  hChangePassForm->sSkinManager->Saturation = ColorChange.Saturation;
+	  hChangePassForm->sSkinManager->Brightness = ColorChange.Brightness;
 	}
   }
 
@@ -306,6 +313,7 @@ INT_PTR __stdcall OnThemeChanged(WPARAM wParam, LPARAM lParam)
 		//Zmiana kolorystyki AlphaControls
 		hChangePassForm->sSkinManager->HueOffset = GetHUE();
 		hChangePassForm->sSkinManager->Saturation = GetSaturation();
+		hChangePassForm->sSkinManager->Brightness = GetBrightness();
 		//Aktywacja skorkowania AlphaControls
 		hChangePassForm->sSkinManager->Active = true;
 	  }
@@ -528,11 +536,11 @@ extern "C" INT_PTR __declspec(dllexport) __stdcall Load(PPluginLink Link)
   //Hook na wyladowanie wtyczki przez usera
   PluginLink.HookEvent(AQQ_SYSTEM_PLUGIN_BEFOREUNLOAD,OnBeforePluginUnload);
   //Hook na zmiane kolorystyki AlphaControls
-  PluginLink.HookEvent(AQQ_SYSTEM_COLORCHANGE,OnColorChange);
+  PluginLink.HookEvent(AQQ_SYSTEM_COLORCHANGEV2,OnColorChange);
   //Hook na zmiane lokalizacji
   PluginLink.HookEvent(AQQ_SYSTEM_LANGCODE_CHANGED,OnLangCodeChanged);
   //Hook na zmiane kompozycji
-  PluginLink.HookEvent(AQQ_SYSTEM_THEMECHANGED, OnThemeChanged);
+  PluginLink.HookEvent(AQQ_SYSTEM_THEMECHANGED,OnThemeChanged);
   //Hook na zamkniecie/otwarcie okien
   PluginLink.HookEvent(AQQ_SYSTEM_WINDOWEVENT,OnWindowEvent);
   //Wczytanie ustawien
