@@ -607,7 +607,7 @@ extern "C" PPluginInfo __declspec(dllexport) __stdcall AQQPluginInfo(DWORD AQQVe
 {
   PluginInfo.cbSize = sizeof(TPluginInfo);
   PluginInfo.ShortName = L"ArchiveLock";
-  PluginInfo.Version = PLUGIN_MAKE_VERSION(1,1,0,0);
+  PluginInfo.Version = PLUGIN_MAKE_VERSION(1,1,1,0);
   PluginInfo.Description = L"Wtyczka blokuje dostêp do archiwum rozmów na has³o. \n\nDomyœlne has³o to \"lock\".";
   PluginInfo.Author = L"Krzysztof Grochocki";
   PluginInfo.AuthorMail = L"kontakt@beherit.pl";
