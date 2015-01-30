@@ -502,20 +502,20 @@ extern "C" INT_PTR __declspec(dllexport) __stdcall Load(PPluginLink Link)
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng").w_str(),L"EN_UNLOCKFRM",L"DATA");
   else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng")!="FF10D39EB4A1E180EBC8071EBCA0A2C2")
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\EN\\\\TUnlockForm.lng").w_str(),L"EN_UNLOCKFRM",L"DATA");
-  //6C948D507335B571F70AA70C40F7886E
+  //447C16AD7D762A49BAAF07925359E167
   if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng"))
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng").w_str(),L"PL_CONST",L"DATA");
-  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng")!="6C948D507335B571F70AA70C40F7886E")
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng")!="447C16AD7D762A49BAAF07925359E167")
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\Const.lng").w_str(),L"PL_CONST",L"DATA");
-  //3B871A6C237D8001428D9854EE1CE9B1
+  //2BA4D9EB893B570E5EF4D0BA4B187371
   if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng"))
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng").w_str(),L"PL_CHANGEPASSFRM",L"DATA");
-  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng")!="3B871A6C237D8001428D9854EE1CE9B1")
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng")!="2BA4D9EB893B570E5EF4D0BA4B187371")
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TChangePassForm.lng").w_str(),L"PL_CHANGEPASSFRM",L"DATA");
-  //27EE06EC109088D8FA3F46D8CDA69F35
+  //CB220D974364ED85EC6C6B50A79F2F5C
   if(!FileExists(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng"))
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng").w_str(),L"PL_UNLOCKFRM",L"DATA");
-  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng")!="27EE06EC109088D8FA3F46D8CDA69F35")
+  else if(MD5File(PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng")!="CB220D974364ED85EC6C6B50A79F2F5C")
    ExtractRes((PluginUserDir+"\\\\Languages\\\\ArchiveLock\\\\PL\\\\TUnlockForm.lng").w_str(),L"PL_UNLOCKFRM",L"DATA");
   //Ustawienie sciezki lokalizacji wtyczki
   UnicodeString LangCode = (wchar_t*)PluginLink.CallService(AQQ_FUNCTION_GETLANGCODE,0,0);
