@@ -54,82 +54,82 @@ __fastcall TUnlockForm::TUnlockForm(TComponent* Owner)
 
 void __fastcall TUnlockForm::WMTransparency(TMessage &Message)
 {
-  Application->ProcessMessages();
-  if(sSkinManager->Active) sSkinProvider->BorderForm->UpdateExBordersPos(true,(int)Message.LParam);
+	Application->ProcessMessages();
+	if(sSkinManager->Active) sSkinProvider->BorderForm->UpdateExBordersPos(true,(int)Message.LParam);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TUnlockForm::FormCreate(TObject *Sender)
 {
-  //Lokalizowanie formy
-  LangForm(this);
-  //Wlaczona zaawansowana stylizacja okien
-  if(ChkSkinEnabled())
-  {
-	UnicodeString ThemeSkinDir = GetThemeSkinDir();
-	//Plik zaawansowanej stylizacji okien istnieje
-	if(FileExists(ThemeSkinDir + "\\\\Skin.asz"))
+	//Lokalizowanie formy
+	LangForm(this);
+	//Wlaczona zaawansowana stylizacja okien
+	if(ChkSkinEnabled())
 	{
-	  //Dane pliku zaawansowanej stylizacji okien
-	  ThemeSkinDir = StringReplace(ThemeSkinDir, "\\\\", "\\", TReplaceFlags() << rfReplaceAll);
-	  sSkinManager->SkinDirectory = ThemeSkinDir;
-	  sSkinManager->SkinName = "Skin.asz";
-	  //Ustawianie animacji AlphaControls
-	  if(ChkThemeAnimateWindows()) sSkinManager->AnimEffects->FormShow->Time = 200;
-	  else sSkinManager->AnimEffects->FormShow->Time = 0;
-	  sSkinManager->Effects->AllowGlowing = ChkThemeGlowing();
-	  //Zmiana kolorystyki AlphaControls
-	  sSkinManager->HueOffset = GetHUE();
-	  sSkinManager->Saturation = GetSaturation();
-	  sSkinManager->Brightness = GetBrightness();
-      //Aktywacja skorkowania AlphaControls
-	  sSkinManager->Active = true;
+		UnicodeString ThemeSkinDir = GetThemeSkinDir();
+		//Plik zaawansowanej stylizacji okien istnieje
+		if(FileExists(ThemeSkinDir + "\\\\Skin.asz"))
+		{
+			//Dane pliku zaawansowanej stylizacji okien
+			ThemeSkinDir = StringReplace(ThemeSkinDir, "\\\\", "\\", TReplaceFlags() << rfReplaceAll);
+			sSkinManager->SkinDirectory = ThemeSkinDir;
+			sSkinManager->SkinName = "Skin.asz";
+			//Ustawianie animacji AlphaControls
+			if(ChkThemeAnimateWindows()) sSkinManager->AnimEffects->FormShow->Time = 200;
+			else sSkinManager->AnimEffects->FormShow->Time = 0;
+			sSkinManager->Effects->AllowGlowing = ChkThemeGlowing();
+			//Zmiana kolorystyki AlphaControls
+			sSkinManager->HueOffset = GetHUE();
+			sSkinManager->Saturation = GetSaturation();
+			sSkinManager->Brightness = GetBrightness();
+			//Aktywacja skorkowania AlphaControls
+			sSkinManager->Active = true;
+		}
+		//Brak pliku zaawansowanej stylizacji okien
+		else sSkinManager->Active = false;
 	}
-	//Brak pliku zaawansowanej stylizacji okien
+	//Zaawansowana stylizacja okien wylaczona
 	else sSkinManager->Active = false;
-  }
-  //Zaawansowana stylizacja okien wylaczona
-  else sSkinManager->Active = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TUnlockForm::FormShow(TObject *Sender)
 {
-  //Z gory zablokowanie dostepu do archiwum
-  Unlocked = false;
-  //Wczytanie grafiki klodki z aktywnej kompozycji
-  SecureImage->Picture->Bitmap->TransparentColor = clBlack;
-  if(FileExists(GetThemeDir()+"////Graphics////Secure.png"))
-   SecureImage->Picture->Bitmap->LoadFromFile(GetThemeDir()+"////Graphics////Secure.png");
-  else if(FileExists(GetDefaultThemeDir()+"////Graphics////Secure.png"))
-   SecureImage->Picture->Bitmap->LoadFromFile(GetDefaultThemeDir()+"////Graphics////Secure.png");
+	//Z gory zablokowanie dostepu do archiwum
+	Unlocked = false;
+	//Wczytanie grafiki klodki z aktywnej kompozycji
+	SecureImage->Picture->Bitmap->TransparentColor = clBlack;
+	if(FileExists(GetThemeDir()+"////Graphics////Secure.png"))
+	 SecureImage->Picture->Bitmap->LoadFromFile(GetThemeDir()+"////Graphics////Secure.png");
+	else if(FileExists(GetDefaultThemeDir()+"////Graphics////Secure.png"))
+	 SecureImage->Picture->Bitmap->LoadFromFile(GetDefaultThemeDir()+"////Graphics////Secure.png");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TUnlockForm::aExitExecute(TObject *Sender)
 {
-  //Zamkniecie formy
-  Close();
+	//Zamkniecie formy
+	Close();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TUnlockForm::aUnlockExecute(TObject *Sender)
 {
-  //Sprawdzanie poprawnosci hasla
-  if(MD5(PassEdit->Text)==GetPassword())
-  {
-	//Odblokowanie dostepu do archiwum
-	Unlocked = true;
-	//Zamkniecie formy
-	Close();
-  }
-  else Application->MessageBox(GetLangStr("IncorrectPassword").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
+	//Sprawdzanie poprawnosci hasla
+	if(MD5(PassEdit->Text)==GetPassword())
+	{
+		//Odblokowanie dostepu do archiwum
+		Unlocked = true;
+		//Zamkniecie formy
+		Close();
+	}
+	else Application->MessageBox(GetLangStr("IncorrectPassword").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TUnlockForm::sSkinManagerSysDlgInit(TacSysDlgData DlgData, bool &AllowSkinning)
 {
-  AllowSkinning = false;
+	AllowSkinning = false;
 }
 //---------------------------------------------------------------------------
 

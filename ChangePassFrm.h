@@ -55,7 +55,6 @@ __published:	// IDE-managed Components
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall aChangePassExecute(TObject *Sender);
 	void __fastcall sSkinManagerSysDlgInit(TacSysDlgData DlgData, bool &AllowSkinning);
-
 private:	// User declarations
 public:		// User declarations
 	__fastcall TChangePassForm(TComponent* Owner);

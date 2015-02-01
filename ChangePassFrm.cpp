@@ -55,95 +55,95 @@ __fastcall TChangePassForm::TChangePassForm(TComponent* Owner)
 
 void __fastcall TChangePassForm::WMTransparency(TMessage &Message)
 {
-  Application->ProcessMessages();
-  if(sSkinManager->Active) sSkinProvider->BorderForm->UpdateExBordersPos(true,(int)Message.LParam);
+	Application->ProcessMessages();
+	if(sSkinManager->Active) sSkinProvider->BorderForm->UpdateExBordersPos(true,(int)Message.LParam);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TChangePassForm::FormCreate(TObject *Sender)
 {
-  //Lokalizowanie formy
-  LangForm(this);
-  //Wlaczona zaawansowana stylizacja okien
-  if(ChkSkinEnabled())
-  {
-	UnicodeString ThemeSkinDir = GetThemeSkinDir();
-	//Plik zaawansowanej stylizacji okien istnieje
-	if(FileExists(ThemeSkinDir + "\\\\Skin.asz"))
+	//Lokalizowanie formy
+	LangForm(this);
+	//Wlaczona zaawansowana stylizacja okien
+	if(ChkSkinEnabled())
 	{
-	  //Dane pliku zaawansowanej stylizacji okien
-	  ThemeSkinDir = StringReplace(ThemeSkinDir, "\\\\", "\\", TReplaceFlags() << rfReplaceAll);
-	  sSkinManager->SkinDirectory = ThemeSkinDir;
-	  sSkinManager->SkinName = "Skin.asz";
-	  //Ustawianie animacji AlphaControls
-	  if(ChkThemeAnimateWindows()) sSkinManager->AnimEffects->FormShow->Time = 200;
-	  else sSkinManager->AnimEffects->FormShow->Time = 0;
-	  sSkinManager->Effects->AllowGlowing = ChkThemeGlowing();
-	  //Zmiana kolorystyki AlphaControls
-	  sSkinManager->HueOffset = GetHUE();
-	  sSkinManager->Saturation = GetSaturation();
-	  sSkinManager->Brightness = GetBrightness();
-      //Aktywacja skorkowania AlphaControls
-	  sSkinManager->Active = true;
+		UnicodeString ThemeSkinDir = GetThemeSkinDir();
+		//Plik zaawansowanej stylizacji okien istnieje
+		if(FileExists(ThemeSkinDir + "\\\\Skin.asz"))
+		{
+			//Dane pliku zaawansowanej stylizacji okien
+			ThemeSkinDir = StringReplace(ThemeSkinDir, "\\\\", "\\", TReplaceFlags() << rfReplaceAll);
+			sSkinManager->SkinDirectory = ThemeSkinDir;
+			sSkinManager->SkinName = "Skin.asz";
+			//Ustawianie animacji AlphaControls
+			if(ChkThemeAnimateWindows()) sSkinManager->AnimEffects->FormShow->Time = 200;
+			else sSkinManager->AnimEffects->FormShow->Time = 0;
+			sSkinManager->Effects->AllowGlowing = ChkThemeGlowing();
+			//Zmiana kolorystyki AlphaControls
+			sSkinManager->HueOffset = GetHUE();
+			sSkinManager->Saturation = GetSaturation();
+			sSkinManager->Brightness = GetBrightness();
+			//Aktywacja skorkowania AlphaControls
+			sSkinManager->Active = true;
+		}
+		//Brak pliku zaawansowanej stylizacji okien
+		else sSkinManager->Active = false;
 	}
-	//Brak pliku zaawansowanej stylizacji okien
+	//Zaawansowana stylizacja okien wylaczona
 	else sSkinManager->Active = false;
-  }
-  //Zaawansowana stylizacja okien wylaczona
-  else sSkinManager->Active = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TChangePassForm::FormShow(TObject *Sender)
 {
-  //Kasowanie danych z pol
-  OldPassEdit->Text = "";
-  NewPassEdit->Text = "";
-  ConfirmNewPassEdit->Text = "";
-  //Ustawianie fokusu
-  OldPassEdit->SetFocus();
-  //Wczytanie grafiki klodki z aktywnej kompozycji
-  SecureImage->Picture->Bitmap->TransparentColor = clBlack;
-  if(FileExists(GetThemeDir()+"////Graphics////Secure.png"))
-   SecureImage->Picture->Bitmap->LoadFromFile(GetThemeDir()+"////Graphics////Secure.png");
-  else if(FileExists(GetDefaultThemeDir()+"////Graphics////Secure.png"))
-   SecureImage->Picture->Bitmap->LoadFromFile(GetDefaultThemeDir()+"////Graphics////Secure.png");
+	//Kasowanie danych z pol
+	OldPassEdit->Text = "";
+	NewPassEdit->Text = "";
+	ConfirmNewPassEdit->Text = "";
+	//Ustawianie fokusu
+	OldPassEdit->SetFocus();
+	//Wczytanie grafiki klodki z aktywnej kompozycji
+	SecureImage->Picture->Bitmap->TransparentColor = clBlack;
+	if(FileExists(GetThemeDir()+"////Graphics////Secure.png"))
+		SecureImage->Picture->Bitmap->LoadFromFile(GetThemeDir()+"////Graphics////Secure.png");
+	else if(FileExists(GetDefaultThemeDir()+"////Graphics////Secure.png"))
+		SecureImage->Picture->Bitmap->LoadFromFile(GetDefaultThemeDir()+"////Graphics////Secure.png");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TChangePassForm::aExitExecute(TObject *Sender)
 {
-  Close();
+	Close();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TChangePassForm::aChangePassExecute(TObject *Sender)
 {
-  //Sprawdzenie akualnego hasla
-  if(MD5(OldPassEdit->Text)==GetPassword())
-  {
-	//Sprawdzanie poprawnosci nowego hasla #1
-	if((!NewPassEdit->Text.IsEmpty())&&(!ConfirmNewPassEdit->Text.IsEmpty()))
+	//Sprawdzenie akualnego hasla
+	if(MD5(OldPassEdit->Text)==GetPassword())
 	{
-	  //Sprawdzanie poprawnosci nowego hasla #2
-	  if(NewPassEdit->Text==ConfirmNewPassEdit->Text)
-	  {
-		//Zmiana has³a
-		SetPassword(NewPassEdit->Text);
-		//Zamkniecie formy
-		Close();
-	  }//GetLangStr
-	  else Application->MessageBox(GetLangStr("DifferentPasswords").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
+		//Sprawdzanie poprawnosci nowego hasla #1
+		if((!NewPassEdit->Text.IsEmpty())&&(!ConfirmNewPassEdit->Text.IsEmpty()))
+		{
+			//Sprawdzanie poprawnosci nowego hasla #2
+			if(NewPassEdit->Text==ConfirmNewPassEdit->Text)
+			{
+				//Zmiana has³a
+				SetPassword(NewPassEdit->Text);
+				//Zamkniecie formy
+				Close();
+			}
+			else Application->MessageBox(GetLangStr("DifferentPasswords").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
+		}
+		else Application->MessageBox(GetLangStr("NoNewPasswords").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
 	}
-	else Application->MessageBox(GetLangStr("NoNewPasswords").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
-  }
-  else Application->MessageBox(GetLangStr("IncorrectOldPassword").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
+	else Application->MessageBox(GetLangStr("IncorrectOldPassword").w_str(),GetLangStr("Error").w_str(),MB_ICONWARNING);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TChangePassForm::sSkinManagerSysDlgInit(TacSysDlgData DlgData, bool &AllowSkinning)
 {
-  AllowSkinning = false;
+	AllowSkinning = false;
 }
 //---------------------------------------------------------------------------
 
