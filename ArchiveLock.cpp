@@ -150,7 +150,7 @@ int GetBrightness()
 UnicodeString MD5(UnicodeString Text)
 {
 	TIdHashMessageDigest5* idmd5 = new TIdHashMessageDigest5();
-	UnicodeString Result = idmd5->HashStringAsHex(Text.LowerCase()).LowerCase();
+	UnicodeString Result = idmd5->HashStringAsHex(Text).LowerCase();
 	delete idmd5;
 	return Result;
 }
