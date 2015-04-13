@@ -1,3 +1,7 @@
+1.1.2.0
+-----
+* Usunięcie drobnego błędu przy zapisie hasła (niepotrzebna zmiana na małe litery).
+
 1.1.1.0
 -----
 * Pełne wsparcie kolorystyki stylizacji okien.

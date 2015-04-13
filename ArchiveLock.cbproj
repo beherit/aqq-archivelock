@@ -76,18 +76,18 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_Release>2</VerInfo_Release>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
-        <VerInfo_Keys>FileVersion=1.1.1.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
+        <VerInfo_Keys>FileVersion=1.1.2.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
         <PackageImports>acnt_R;adortl;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CloudService;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;emsclient;fmx;fmxase;fmxdae;fmxobj;FMXTee;FmxTeeUI;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;MetropolisUILiveTile;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;svn;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vclie;vclimg;VCLRESTComponents;vclribbon;VclSmp;vcltouch;vclx;xmlrtl;$(PackageImports)</PackageImports>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_Release>2</VerInfo_Release>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
-        <VerInfo_Keys>FileVersion=1.1.1.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
+        <VerInfo_Keys>FileVersion=1.1.2.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
         <BCC_PCHName_Clang>ArchiveLock.h</BCC_PCHName_Clang>
         <PackageImports>acnt_R;adortl;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CloudService;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;emsclient;fmx;fmxase;fmxdae;fmxobj;FMXTee;FmxTeeUI;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;MetropolisUILiveTile;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vclie;vclimg;VCLRESTComponents;vclribbon;VclSmp;vcltouch;vclx;xmlrtl;$(PackageImports)</PackageImports>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
@@ -117,15 +117,15 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_Release>2</VerInfo_Release>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
-        <VerInfo_Keys>FileVersion=1.1.1.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
+        <VerInfo_Keys>FileVersion=1.1.2.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
-        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_Release>2</VerInfo_Release>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
-        <VerInfo_Keys>FileVersion=1.1.1.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
+        <VerInfo_Keys>FileVersion=1.1.2.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -133,17 +133,17 @@
         <TASM_Debugging>None</TASM_Debugging>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_Release>2</VerInfo_Release>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
         <ILINK_LibraryPath>$(BDS)\lib\win32\release\;C:\Users\Public\Documents\Embarcadero\Studio\15.0\DCP\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-        <VerInfo_Keys>FileVersion=1.1.1.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
+        <VerInfo_Keys>FileVersion=1.1.2.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
         <LinkPackageStatics>rtl.lib;vcl.lib;IndyProtocols.lib;IndyCore.lib;IndySystem.lib;acnt_R.lib;vclimg.lib;vclx.lib</LinkPackageStatics>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
-        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_Release>2</VerInfo_Release>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
-        <VerInfo_Keys>FileVersion=1.1.1.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
+        <VerInfo_Keys>FileVersion=1.1.2.0;LegalTrademarks=Krzysztof Grochocki;ProductVersion=1.0.0.0;LegalCopyright=Krzysztof Grochocki;CompanyName=Beherit Development;ProductName=ArchiveLock</VerInfo_Keys>
         <BCC_PCHName_Clang>ArchiveLock.h</BCC_PCHName_Clang>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
